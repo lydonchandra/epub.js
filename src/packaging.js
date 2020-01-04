@@ -56,6 +56,8 @@ class Packaging {
 
 		this.spine = this.parseSpine(spineNode, this.manifest);
 
+
+		this.uniqueIdentifierAttrName = this.findUniqueIdentifierAttrName(packageDocument);
 		this.uniqueIdentifier = this.findUniqueIdentifier(packageDocument);
 		this.metadata = this.parseMetadata(metadataNode);
 
@@ -179,6 +181,11 @@ class Packaging {
 		});
 
 		return spine;
+	}
+
+	findUniqueIdentifierAttrName(packageXml) {
+		var uniqueIdentifierAttrName = packageXml.documentElement.getAttribute("unique-identifier");
+		return uniqueIdentifierAttrName;
 	}
 
 	/**
